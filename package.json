@@ -1,0 +1,57 @@
+{
+  "name": "dsh-learning-workbench",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/host/index.mjs",
+    "./client": "./src/ui/client.js",
+    "./core": "./src/core/workbench.mjs",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "test": "node scripts/test.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-storage-domain": "0.2.2-rc.2",
+    "zod": "^4.0.0"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {
+    "ical.js": "2.2.1"
+  },
+  "description": "DSH 学习工作台：只读 StudyHub 与 ICS 来源、学习指标和全局面板",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhoukunrui060514/dsh-learning-workbench"
+  },
+  "main": "./src/host/index.mjs",
+  "files": [
+    "src/core/",
+    "src/host/",
+    "src/ui/",
+    "src/domains/learning/",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "docs/deployment.md"
+  ],
+  "bundleDependencies": [
+    "ical.js"
+  ]
+}

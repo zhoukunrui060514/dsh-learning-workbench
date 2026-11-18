@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>学习工作台 0.2 · 开发预览</title>
+<!-- Dev preview only: React from the network stands in for the host's React; never part of the plugin. -->
+<script type="importmap">{"imports":{"react":"https://esm.sh/react@19.1.0","react-dom/client":"https://esm.sh/react-dom@19.1.0/client?deps=react@19.1.0"}}</script>
+<style>
+html,body{margin:0;height:100%}
+body{display:flex;flex-direction:column;font-family:system-ui,sans-serif}
+#root{flex:1;min-height:0}
+.dev{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:6px 12px;font-size:12px;background:#333;color:#eee}
+.dev select{font-size:12px}
+/* Stand-ins for DSH theme variables (names from @deepseek-ai/dsh-client-ui-theme). */
+:root[data-theme=light]{color-scheme:light;--dsw-font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;--dsw-alias-bg-base:#f5f6f7;--dsw-alias-bg-layer-1:#ffffff;--dsw-alias-interactive-bg-hover:#eaf2f4;--dsw-alias-label-primary:#242d36;--dsw-alias-label-secondary:#596773;--dsw-alias-label-primary-inverted:#ffffff;--dsw-alias-border-l2:#dce2e6;--dsw-alias-brand-primary:#356c7c;--dsw-alias-state-error-primary:#a33b3b;--dsw-alias-state-warn-primary:#8b5525}
+:root[data-theme=dark]{color-scheme:dark;--dsw-font-family:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;--dsw-alias-bg-base:#171c21;--dsw-alias-bg-layer-1:#20272e;--dsw-alias-interactive-bg-hover:#293e48;--dsw-alias-label-primary:#e3e9ed;--dsw-alias-label-secondary:#b3bec6;--dsw-alias-label-primary-inverted:#171c21;--dsw-alias-border-l2:#3a4650;--dsw-alias-brand-primary:#9bc7d5;--dsw-alias-state-error-primary:#efa6a6;--dsw-alias-state-warn-primary:#e4b484}
+</style>
+</head>
+<body>
+<div class="dev" role="toolbar" aria-label="预览控制">
+ <span>开发预览 · 虚构数据 · 刷新即重置</span>
+ <label>主题 <select id="theme" aria-label="预览主题"><option value="light">亮</option><option value="dark">暗</option></select></label>
+ <label>模拟后端 <select id="mode" aria-label="模拟后端"><option value="ok">正常</option><option value="BUSY">409 BUSY</option><option value="REVISION_CONFLICT">409 REVISION_CONFLICT</option><option value="DUPLICATE_SOURCE">409 DUPLICATE_SOURCE</option><option value="NOT_FOUND">404 NOT_FOUND</option><option value="INVALID_INPUT">400 INVALID_INPUT</option><option value="STORAGE_FAILED">500 STORAGE_FAILED</option><option value="legacy">422 旧字符串错误</option><option value="sync-fail">同步失败 502</option><option value="path-missing">本地 ICS 找不到文件</option></select></label>
+ <label>设置数据 <select id="settings" aria-label="设置数据"><option value="normal">正常</option><option value="reload">reloadRequired</option><option value="schema">无法识别的 schema</option><option value="empty">空列表 · profile</option></select></label>
+</div>
+<div id="root"></div>
+<script type="module" src="/scripts/preview/preview.mjs"></script>
+</body>
+</html>

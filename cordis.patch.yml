@@ -1,0 +1,4 @@
+- insert:
+    - id: learning-workbench
+      name: dsh-learning-workbench
+      config: {}
